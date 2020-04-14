@@ -1,0 +1,24 @@
+{
+  "name": "JioFi Status Updater",
+  "version": "0.1",
+  "description": "Gets stats from JioFi",
+  "manifest_version": 2,
+  "icons": {
+    "128": "logo.png"
+  },
+  "background": {
+    "persistent": true,
+    "scripts": [
+      "background_script.js"
+    ]
+  },
+  "permissions": [
+    "http://192.168.1.1/",
+    "storage",
+    "notifications"
+  ],
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_popup": "popup.html"
+  }
+}
