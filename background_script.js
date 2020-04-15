@@ -1,5 +1,5 @@
 const checkJioFiStatus = () => {
-    fetch("http://192.168.1.1/cgi-bin/lget.cgi?cmd=get_battery_exist&tmpdb=gui_for_web_battery_status,dm_battery_percent&sids=213894", {})
+    fetch("http://192.168.1.1/cgi-bin/lget.cgi?&tmpdb=gui_for_web_battery_status,dm_battery_percent&sids=213894", {})
         .then(response => {
             if (!response.ok) {
                 return Error(response.statusText)
@@ -22,6 +22,7 @@ const checkJioFiStatus = () => {
             });
         })
         .catch(err => {
+            console.log("failure", err);
             chrome.storage.sync.set({ isConnectedToJioFi: false }, function () {
                 console.log('Value is set to ' + false);
             });
