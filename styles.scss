@@ -2,6 +2,14 @@
     text-align: center;
 }
 
+.disconnected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    text-align: center;
+}
+
 .battery-info {
     font-size: large;
 }

@@ -27,7 +27,9 @@ const connectedHtml = (percent, chargingStatus) => {
 
 const disconnectedHtml = () => {
     return (
-        `<div>Not connected to JioFi</div>`
+        `<div class="disconnected">
+            <h1>Not connected to JioFi</h1>
+        </div>`
     )
 }
 
@@ -40,6 +42,6 @@ chrome.storage.sync.get(['isConnectedToJioFi'], function (result) {
     }
 
     else {
-        document.getgetElementById('container').innerHTML = disconnectedHtml();
+        document.getElementById('container').innerHTML = disconnectedHtml();
     }
 });
