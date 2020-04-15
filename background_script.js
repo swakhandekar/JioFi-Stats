@@ -1,3 +1,5 @@
+let notficationHistory = {}
+
 const checkJioFiStatus = () => {
     fetch("http://192.168.1.1/cgi-bin/lget.cgi?&tmpdb=gui_for_web_battery_status,dm_battery_percent&sids=213894", {})
         .then(response => {
@@ -16,8 +18,14 @@ const checkJioFiStatus = () => {
                 const batteryPercent = parseInt(response.dm_battery_percent)
                 const charging = response.gui_for_web_battery_status === 'ac'
 
-                if (!charging && batteryPercent <= 20 && batteryPercent % 5 === 0)
-                    alert(`${response.dm_battery_percent} percent battery! please charge`)
+                if(charging) notficationHistory = {}
+
+                if (!charging && batteryPercent <= 20 && batteryPercent % 5 === 0) {
+                    if(!(batteryPercent in notficationHistory)) {
+                        alert(`${response.dm_battery_percent} percent battery! please charge`)
+                        notficationHistory[batteryPercent] = true;
+                    }
+                }
 
             });
         })
