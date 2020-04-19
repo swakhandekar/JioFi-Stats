@@ -18,11 +18,11 @@ const checkJioFiStatus = () => {
                 const batteryPercent = parseInt(response.dm_battery_percent)
                 const charging = response.gui_for_web_battery_status === 'ac'
 
-                if(charging) notficationHistory = {}
+                if (charging) notficationHistory = {}
 
                 if (!charging && batteryPercent <= 20 && batteryPercent % 5 === 0) {
-                    if(!(batteryPercent in notficationHistory)) {
-                        alert(`${response.dm_battery_percent} percent battery! please charge`)
+                    if (!(batteryPercent in notficationHistory)) {
+                        createAlert(batteryPercent);
                         notficationHistory[batteryPercent] = true;
                     }
                 }
@@ -37,4 +37,17 @@ const checkJioFiStatus = () => {
         })
 }
 
+const createAlert = (batteryPercent) => {
+    const options = {
+        type: "basic",
+        title: "JioFi Battery",
+        message: `Battery Low, ${batteryPercent}% remaining, please charge`,
+        iconUrl: "low-battery.png"
+        //Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
+    }
+
+    chrome.notifications.create('', options);
+}
+
+checkJioFiStatus();
 setInterval(checkJioFiStatus, 15000)
