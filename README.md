@@ -8,9 +8,9 @@ Currently it supports only JioFi model JMR1040
 Supported features:
 ------------------
 1. Battery stats in extensions tray
-   - It shows available battery with different colors (gree, blue, red)
+   - It shows available battery with different colors (green, blue, red)
    - If it's charging or not
-   - Future developement: Show if the battery is fully charged
+   - Future development: Show if the battery is fully charged
 <p align="center">
   <img src="popup_preview.png" width="275" alt="pop-up preview">
 </p>
