@@ -4,12 +4,12 @@
   "description": "Gets stats from JioFi",
   "manifest_version": 2,
   "icons": {
-    "128": "logo.png"
+    "128": "icons/logo.png"
   },
   "background": {
     "persistent": true,
     "scripts": [
-      "background_script.js"
+      "js/background_script.js"
     ]
   },
   "permissions": [
@@ -18,7 +18,7 @@
     "notifications"
   ],
   "browser_action": {
-    "default_icon": "logo.png",
-    "default_popup": "popup.html"
+    "default_icon": "icons/logo.png",
+    "default_popup": "html/popup.html"
   }
 }

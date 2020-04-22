@@ -4,14 +4,8 @@ const getColor = (percent) => {
     else return "red"
 }
 
-const parseChargingStatus = (chargingStatus) => {
-    if (chargingStatus === "ac") return "Charging"
-    return "Discharging"
-}
-
 const connectedHtml = (percent, chargingStatus) => {
     const color = getColor(percent);
-    const chargingStatusText = parseChargingStatus(chargingStatus);
 
     return (
         `<div class="connected">
@@ -19,7 +13,7 @@ const connectedHtml = (percent, chargingStatus) => {
             <div class="battery-info">
             <div class="battery-value ${color}" id='battery-value'>${percent}%</div>
             <div>Remaining</div>
-            <div class="charging-status">${chargingStatusText}</div>
+            <div class="charging-status">${chargingStatus}</div>
             </div>
         </div>`
     );
@@ -36,8 +30,8 @@ const disconnectedHtml = () => {
 chrome.storage.sync.get(['isConnectedToJioFi'], function (result) {
     if (result.isConnectedToJioFi) {
 
-        chrome.storage.sync.get(['dm_battery_percent', 'gui_for_web_battery_status'], function (result) {
-            document.getElementById('container').innerHTML = connectedHtml(result.dm_battery_percent, result.gui_for_web_battery_status);
+        chrome.storage.sync.get(['batteryStats'], function (result) {
+            document.getElementById('container').innerHTML = connectedHtml(result.batteryStats.percent, result.batteryStats.status);
         });
     }
 
