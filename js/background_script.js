@@ -70,7 +70,7 @@ const parseBatteryStats = (response) => {
 const clearLowBatteryNotificationHistory = () => lowBatteryNotficationHistory = {}
 
 const generateNotifications = (batteryStats) => {
-    const batteryPercent = parseInt(batteryStats.percent.dm_battery_percent)
+    const batteryPercent = parseInt(batteryStats.percent)
 
     switch (batteryStats.status) {
         case BATTERY_STATUS.CHARGING: {
